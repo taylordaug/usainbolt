@@ -13,6 +13,7 @@
 		4BA9C5341FDF66EB007E1152 /* usainbolt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4BA9C5321FDF66EB007E1152 /* usainbolt.xcdatamodeld */; };
 		4BA9C5361FDF66EB007E1152 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BA9C5351FDF66EB007E1152 /* Assets.xcassets */; };
 		4BA9C5391FDF66EB007E1152 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BA9C5371FDF66EB007E1152 /* LaunchScreen.storyboard */; };
+		4BA9C5431FE0731F007E1152 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA9C5421FE0731F007E1152 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,8 @@
 		4BA9C5351FDF66EB007E1152 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4BA9C5381FDF66EB007E1152 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4BA9C53A1FDF66EB007E1152 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BA9C5401FE07315007E1152 /* usainbolt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = usainbolt.entitlements; sourceTree = "<group>"; };
+		4BA9C5421FE0731F007E1152 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BA9C5431FE0731F007E1152 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +46,7 @@
 			children = (
 				4BA9C52A1FDF66EB007E1152 /* usainbolt */,
 				4BA9C5291FDF66EB007E1152 /* Products */,
+				4BA9C5411FE0731F007E1152 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +61,7 @@
 		4BA9C52A1FDF66EB007E1152 /* usainbolt */ = {
 			isa = PBXGroup;
 			children = (
+				4BA9C5401FE07315007E1152 /* usainbolt.entitlements */,
 				4BA9C52B1FDF66EB007E1152 /* AppDelegate.swift */,
 				4BA9C52D1FDF66EB007E1152 /* ViewController.swift */,
 				4BA9C52F1FDF66EB007E1152 /* Main.storyboard */,
@@ -65,6 +71,14 @@
 				4BA9C5321FDF66EB007E1152 /* usainbolt.xcdatamodeld */,
 			);
 			path = usainbolt;
+			sourceTree = "<group>";
+		};
+		4BA9C5411FE0731F007E1152 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4BA9C5421FE0731F007E1152 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,7 +113,15 @@
 				TargetAttributes = {
 					4BA9C5271FDF66EB007E1152 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -278,12 +300,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = usainbolt/usainbolt.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = R79L9H9M85;
 				INFOPLIST_FILE = usainbolt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = taylor.usainbolt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.usainbolt.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "368c1381-32ab-4840-a429-f3836352ad54";
+				PROVISIONING_PROFILE_SPECIFIER = "Usain Bolt Development";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -293,12 +319,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = usainbolt/usainbolt.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = R79L9H9M85;
 				INFOPLIST_FILE = usainbolt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = taylor.usainbolt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.usainbolt.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "368c1381-32ab-4840-a429-f3836352ad54";
+				PROVISIONING_PROFILE_SPECIFIER = "Usain Bolt Development";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
