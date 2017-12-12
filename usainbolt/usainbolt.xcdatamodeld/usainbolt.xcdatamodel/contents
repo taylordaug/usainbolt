@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13771" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Challenge" representedClassName="Challenge" syncable="YES" codeGenerationType="class">
+        <attribute name="distanceGoal" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="participatingTeams" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Team" inverseName="challengesEntered" inverseEntity="Team" syncable="YES"/>
+        <relationship name="winningTeam" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="challengesWon" inverseEntity="Team" syncable="YES"/>
+    </entity>
+    <entity name="Location" representedClassName="Location" syncable="YES" codeGenerationType="class">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="run" optional="YES" maxCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="Run" inverseName="locations" inverseEntity="Run" syncable="YES"/>
+    </entity>
+    <entity name="Run" representedClassName="Run" syncable="YES" codeGenerationType="class">
+        <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="locations" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Location" inverseName="run" inverseEntity="Location" syncable="YES"/>
+        <relationship name="runner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Runner" inverseName="runs" inverseEntity="Runner" syncable="YES"/>
+    </entity>
+    <entity name="Runner" representedClassName="Runner" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="runs" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Run" inverseName="runner" inverseEntity="Run" syncable="YES"/>
+        <relationship name="teams" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Team" inverseName="runners" inverseEntity="Team" syncable="YES"/>
+    </entity>
+    <entity name="Team" representedClassName="Team" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="challengesEntered" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Challenge" inverseName="participatingTeams" inverseEntity="Challenge" syncable="YES"/>
+        <relationship name="challengesWon" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Challenge" inverseName="winningTeam" inverseEntity="Challenge" syncable="YES"/>
+        <relationship name="runners" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Runner" inverseName="teams" inverseEntity="Runner" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Run" positionX="-495" positionY="-396" width="128" height="118"/>
+        <element name="Location" positionX="-326" positionY="-258" width="128" height="105"/>
+        <element name="Runner" positionX="-693" positionY="-459" width="128" height="88"/>
+        <element name="Team" positionX="-486" positionY="-576" width="128" height="103"/>
+        <element name="Challenge" positionX="-720" positionY="-666" width="128" height="103"/>
+    </elements>
+</model>
